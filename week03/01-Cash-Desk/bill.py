@@ -1,12 +1,17 @@
 class Bill:
     def __init__(self, amount):
-        self._amount = amount
+        if amount < 0:
+            raise ValueError
+        try:
+            self._amount = amount
+        except:
+            raise TypeError
 
     def __str__(self):
         return "A {}$ bill".format(self._amount)
 
     def __repr__(self):
-        return str(self)
+        return self.__str__()
 
     def __int__(self):
         return int(self._amount)

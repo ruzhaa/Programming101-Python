@@ -1,6 +1,3 @@
-from bill import Bill
-
-
 class BatchBill:
     def __init__(self, list_of_bills):
         self._bills = list_of_bills
@@ -12,5 +9,4 @@ class BatchBill:
         return self._bills[index]
 
     def total(self):
-        bill = Bill(self)
         return sum([bill.total() for bill in self._bills])
