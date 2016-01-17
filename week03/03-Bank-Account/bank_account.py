@@ -1,5 +1,7 @@
 class BankAccount():
     def __init__(self, name, balance, currency):
+        if balance < 0:
+            raise ValueError
         self.__name = name
         self.__balance = balance
         self.__currency = currency
@@ -7,6 +9,8 @@ class BankAccount():
         self.list_history.append("Account was created")
 
     def deposit(self, amount):
+        if amount < 0:
+            raise ValueError
         self.__balance += amount
         self.list_history.append("Deposited {}{}".format(amount, self.__currency))
         return self.__balance
@@ -24,14 +28,13 @@ class BankAccount():
             return False
 
     def __str__(self):
-        text = "Bank account for {} with balance of {}{}".\
+        return "Bank account for {} with balance of {}{}".\
               format(self.__name, self.balance(), self.__currency)
-        self.list_history.append(text)
-        return text
+
 
     def __int__(self):
         self.list_history.append("__int__ check -> {}{}".format(self.__balance, self.__currency))
-        return int(self.balance())
+        return self.__balance
 
     def transfer_to(self, account, amount):
         if account.__currency == self.__currency:
