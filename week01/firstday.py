@@ -1,5 +1,9 @@
 def sum_of_digits(n):
-    return sum([int(i) for i in str(n)])
+    n = abs(n)
+    count = 0
+    for i in str(n):
+        count += int(i)
+    return count
 
 
 def to_digits(n):
@@ -13,7 +17,7 @@ def to_number(digits):
     result = ""
     for i in digits:
         result += str(i)
-    return result
+    return int(result)
 
 
 def fact_digits(n):
@@ -42,7 +46,7 @@ def fib_number(n):
     for i in range(0, n):
         result += str(a)
         a, b = b, a + b
-    return result
+    return int(result)
 
 
 def palindrome(n):
