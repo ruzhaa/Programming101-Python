@@ -67,3 +67,48 @@ def gas_stations(distance, tank_size, stations):
             size = tank_size
     # bez purvoto zarejdane na [0]
     return result[1:]
+    
+    
+def dictionary(number, count):
+    phone = {}
+    phone[0] = [" "]
+    phone[2] = ["a", "b", "c"]
+    phone[3] = ["d", "e", "f"]
+    phone[4] = ["g", "h", "i"]
+    phone[5] = ["j", "k", "l"]
+    phone[6] = ["m", "n", "o"]
+    phone[7] = ["p", "q", "r", "s"]
+    phone[8] = ["t", "u", "v"]
+    phone[9] = ["w", "x", "y", "z"]
+    
+    if count >= len(phone[number]):
+        return phone[number][count - len(phone[number]) - 1]
+        
+    return phone[number][count - 1]
+    
+
+def numbers_to_message(sequence):
+    group_of_numbers = group(sequence)
+    message = ""
+    count = 0
+    next_index = 0
+    up = False
+    
+    for gr in group_of_numbers:
+        count = len(gr)
+        if gr[0] == 1:
+            up = True
+            continue
+        
+        if gr[0] == -1:
+            continue
+        
+        if up:
+            i = group_of_numbers.index(gr)
+            next_list = group_of_numbers[i]
+            message += dictionary(next_list[0], count).upper()
+            up = False
+        else:
+            message += dictionary(gr[0], count)
+  
+    return message
