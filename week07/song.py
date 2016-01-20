@@ -129,51 +129,8 @@ class Playlist:
     def get_songs(self):
         return self.__Playlist
 
-    def get_dict(self):
-        dict_of_songs = []
-        for song in self.get_songs():
-            dict_of_songs.append(song.__dict__)
-        result = {
-                "name": self.__name,
-                "repeat": self.__repeat,
-                "shuffle": self.__shuffle,
-                "song_index": self.__song_index,
-                "songs": dict_of_songs,
-        }
-        return result
-
-    def save(self, filename):
-        with open(filename, 'w') as data:
-            json.dump(self.get_dict(), data, indent=4)
-
-    def load_from_dict(self, data_d):
-        playlist = Playlist("Name")
-        songss = data_d.pop('songs')
-        playlist.__dict__ = data_d
-        playlist._songs = []
-        for song in songss:
-            newsong = Song(song["_Song__title"], song["_Song__artist"], song["_Song__album"], song["_Song__length"])
-            newsong.__dict__ = song
-            playlist.add_song(newsong)
-        return playlist
-
-    def load(self, filename):
-        with open(filename, 'r') as f:
-            data_d = json.load(f)
-        return self.load_from_dict(data_d)
+# ????? save and load
+ 
 
 
-def main():
-    song1 = Song("Runaway", "Bon Jovi", "Greatest Hilts", "03:51")
-    song2 = Song("In and out of love", "Bon Jovi", "Greatest Hilts", "04:26")
-    song3 = Song("Lost Highway", "Bon Jovi", "Greatest Hilts", "1:04:13")
-    test = []
-    test.append(song1)
-    test.append(song2)
-    play = Playlist("test", repeat=True)
-    play.add_songs(test)
-    play.add_song(song3)
-    play.pprint_playlist()
 
-if __name__ == '__main__':
-    main()
