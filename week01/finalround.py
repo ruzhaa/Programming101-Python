@@ -20,7 +20,7 @@ def iterations_of_nan_expand(expanded):
     not_a = "Not a"
     if expanded == "":
         return 0
-    elif not_a in expanded:
+    elif not_a in expanded and 'NaN' in expanded:
         return expanded.count(not_a, 0, len(expanded))
     else:
         return False
