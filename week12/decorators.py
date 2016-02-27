@@ -5,15 +5,15 @@ from functools import wraps
 
 def accepts(*string):
     def function(func):
+        @wraps(func)
         def check_type(*func_args):
             count = 0
             while count < len(func_args):
                 if isinstance(func_args[count], string[count]):
                     count += 1
-                    # continue
                 else:
-                    return "TypeError: Argument {} of say_hello is not {}!".\
-                            format(count + 1, string[count].__name__)
+                    raise TypeError("Argument {} of say_hello is not {}!".\
+                              format(count + 1, string[count].__name__))
             return func(*func_args)
         return check_type
     return function
@@ -66,6 +66,7 @@ def get_low():
 
 def performance(file_name):
     def function(func):
+        @wraps(func)
         def get_time():
             res = func()
             start = time.time()
