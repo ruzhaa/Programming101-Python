@@ -1,0 +1,54 @@
+<form class="form-horizontal" action = "/courses/new/" method="post">
+{% csrf_token %}
+<fieldset>
+
+<!-- Form Name -->
+<legend>Create new course</legend>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="name">Course name</label>  
+  <div class="col-md-4">
+  <input id="name" name="name" type="text" value = "{{ name }}" placeholder="name" class="form-control input-md">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="description">Description</label>  
+  <div class="col-md-4">
+  <input id="description" name="description" type="text" value = "{{ description }}" placeholder="description" class="form-control input-md">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="start_data">Start date</label>  
+  <div class="col-md-4">
+  <input id="start_data" name="start_data" type="text" value = "{{ start_data }}" placeholder="start date" class="form-control input-md">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="end_data">End date</label>  
+  <div class="col-md-4">
+  <input id="end_data" name="end_data" type="text" value = "{{ end_data }}" placeholder="end date" class="form-control input-md">
+    
+  </div>
+</div>
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="singlebutton"></label>
+  <br/>
+  <div class="col-md-4">
+    <button type="submit">Create</button>
+  </div>
+</div>
+
+</fieldset>
+</form>
