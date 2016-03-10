@@ -2,16 +2,16 @@ from django.shortcuts import render, redirect
 from django.core.urlresolvers import reverse, reverse_lazy
 
 from .models import User
-from .decorators import login_required
+from .decorators import login_required, annon_required
 
 
-@login_required(redirect_url=reverse_lazy('login'))
 def home(request):
     if request.method == 'POST':
         return redirect(reverse('login'))
     return render(request, 'index.html', locals())
 
 
+@annon_required(redirect_url=reverse_lazy('profile'))
 def register(request):
     if request.method == 'POST':
 
@@ -29,11 +29,8 @@ def register(request):
     return render(request, 'register.html', locals())
 
 
+@annon_required(redirect_url=reverse_lazy('profile'))
 def login(request):
-    session_email = request.session.get('email', False)
-    print(session_email)
-    if session_email:
-        return redirect(reverse('profile'))
 
     if request.method == 'POST':
         email = request.POST.get('email')
@@ -50,8 +47,10 @@ def login(request):
     return render(request, 'login.html', locals())
 
 
+@login_required(redirect_url=reverse_lazy('login'))
 def profile(request):
     if request.method == 'POST':
+        request.session.flush()
         return redirect(reverse('login'))
 
     return render(request, 'profile.html', locals())

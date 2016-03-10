@@ -50,6 +50,8 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'user.middleware.SetUserInRequestMiddleware',
 ]
 
 ROOT_URLCONF = 'user_everywhere.urls'
