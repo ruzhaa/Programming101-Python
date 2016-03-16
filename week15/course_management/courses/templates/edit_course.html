@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Course Management</title>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h2>Edit course</h2>
+  <form class="form-horizontal" method="post">
+{% csrf_token %}
+    <div class="form-group">
+      <label for="name">Course name:</label>
+      <input type="text" class="form-control" id="name" value = "{{ course.name }}" name = "name"placeholder="name">
+    </div>
+
+    <div class="form-group">
+      <label for="description">description:</label>
+      <input type="text" class="form-control" id="description" value = "{{ course.description }}" name = "description" placeholder="description">
+    </div>
+
+    <div class="form-group">
+      <label for="start_data">Start date:</label>
+      <input type="text" class="form-control" id="start_date" value = "{{ course.start_date }}" name = "start_date" placeholder="start_date">
+    </div>
+
+    <div class="form-group">
+      <label for="end_date">End date:</label>
+      <input type="text" class="form-control" id="end_date" value = "{{ course.end_date }}" name = "end_date" placeholder="end_date">
+    </div>
+
+<!--     <div class="form-group">
+      <label for="approximate">approximate:</label>
+      <input type="text" class="form-control" id="approximate" value = "{{ course.approximate }} months" name = "approximate" placeholder="approximate">
+    </div> -->
+
+    <div class="col-md-4">
+      <button type="submit">Edit and save</button>
+    </div>
+  </form>
+</div>
+
+</body>
+</html>

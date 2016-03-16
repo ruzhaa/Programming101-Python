@@ -20,6 +20,7 @@ from courses import urls as courses_urls
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^courses/', include(courses_urls)),
+    # url(r'^courses/', include(courses_urls)),
+    # url(r'^lecture/', include(courses_urls)),
     url(r'^', include(courses_urls)),
 ]
