@@ -11,38 +11,39 @@ def to_digits(n):
 
 def to_number(digits):
     result = ""
-    for i in digits:
-        result += str(i)
+    for num in digits:
+        result += str(num)
     return result
 
 
-def fact_digits(n):
-    result = 0
-    current_result = 1
-    for num in str(n):
-        for i in range(1, int(num) + 1):
-            current_result *= i
-        result += current_result
-        current_result = 1
-    return result
+def fact_digits(num):
+    factoriel = 1
+    while num != 1:
+        factoriel *= num
+        num -= 1
+    return factoriel
 
 
-def fibonacci(n):
+def fibonacci(num):
     result = []
     a, b = 1, 1
-    for i in range(0, n):  # while len(result) < n
+    while len(result) < num:
         result.append(a)
         a, b = b, a + b
     return result
 
 
-def fib_number(n):
+def fib_number(num):
     result = ""
     a, b = 1, 1
-    for i in range(0, n):
+    for n in range(1, num):
         result += str(a)
         a, b = b, a + b
     return result
+
+
+# this tasks are refactoring
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 
 def palindrome(n):
