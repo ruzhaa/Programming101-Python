@@ -69,7 +69,6 @@ def gas_stations(distance, tank_size, stations):
     return result[1:]
 
 
-
 def dictionary(number, count):
     phone = {}
     phone[0] = [" "]
