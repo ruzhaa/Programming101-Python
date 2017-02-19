@@ -1,0 +1,4 @@
+INSERT INTO clients (username, password, salt)
+VALUES ("ruja", "asdA123##", "123cda?das@@");
+ 
+ 
