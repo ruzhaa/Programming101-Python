@@ -1,0 +1,26 @@
+{
+    "name": "test",
+    "songs": [
+        {
+            "_Song__length": "03:51",
+            "_Song__album": "Greatest Hilts",
+            "_Song__title": "Runaway",
+            "_Song__artist": "Bon Jovi"
+        },
+        {
+            "_Song__length": "04:26",
+            "_Song__album": "Greatest Hilts",
+            "_Song__title": "In and out of love",
+            "_Song__artist": "Bon Jovi"
+        },
+        {
+            "_Song__length": "1:04:13",
+            "_Song__album": "Greatest Hilts",
+            "_Song__title": "Lost Highway",
+            "_Song__artist": "Bon Jovi"
+        }
+    ],
+    "repeat": true,
+    "song_index": 0,
+    "shuffle": false
+}
