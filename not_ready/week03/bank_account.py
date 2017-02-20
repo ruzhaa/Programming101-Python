@@ -1,50 +1,50 @@
 class BankAccount():
     def __init__(self, name, balance, currency):
-        if balance < 0:
-            raise ValueError
         self.__name = name
-        self.__balance = balance
+        if balance >= 0:
+            self.__balance = balance
+        else:
+            raise ValueError
         self.__currency = currency
-        self.list_history = []
-        self.list_history.append("Account was created")
+        self.messages_for_history = []
+        self.messages_for_history.append('Account was created')
 
     def deposit(self, amount):
-        if amount < 0:
+        if amount > 0:
+            self.__balance += amount
+            self.messages_for_history.append('Deposited {}{}'.format(amount, self.__currency))
+        else:
             raise ValueError
-        self.__balance += amount
-        self.list_history.append("Deposited {}{}".format(amount, self.__currency))
-        return self.__balance
 
     def balance(self):
-        self.list_history.append("Balance check -> {}{}".format(self.__balance, self.__currency))
+        self.messages_for_history.append('Balance check -> {}{}'.format(self.__balance, self.__currency))
         return self.__balance
 
     def withdraw(self, amount):
         if amount <= self.balance():
             self.__balance -= amount
+            self.messages_for_history.append('{}{} was withdrawed'.format(amount, self.__currency))
             return True
         else:
-            self.list_history.append("{}{} was withdrawed".format(amount, self.__currency))
+            self.messages_for_history.append('Withdraw for {}{} failed'.format(amount, self.__currency))
             return False
 
     def __str__(self):
-        return "Bank account for {} with balance of {}{}".\
-              format(self.__name, self.balance(), self.__currency)
-
+        return "Bank account for {} with balance of {}{}"\
+            .format(self.__name, self.__balance, self.__currency)
 
     def __int__(self):
-        self.list_history.append("__int__ check -> {}{}".format(self.__balance, self.__currency))
-        return self.__balance
+        self.messages_for_history.append('__int__ check -> {}{}'.format(self.__balance, self.__currency))
+        return int(self.__balance)
 
+# account == other
     def transfer_to(self, account, amount):
-        if account.__currency == self.__currency:
+        if self.__currency == account.__currency:
             account.__balance += amount
             self.__balance -= amount
-            self.list_history.append("{}{} was withdrawed".format(amount, self.__currency))
             return True
         else:
-            self.list_history.append("Withdraw for {}{} failed.".format(amount, self.__currency))
             return False
 
     def history(self):
-        return self.list_history
+        return self.messages_for_history
