@@ -42,6 +42,7 @@ class BankAccount():
         if self.__currency == account.__currency:
             account.__balance += amount
             self.__balance -= amount
+            self.messages_for_history.append('Transfer to {} for {}{}'.format(account.__name, amount, account.__currency))
             return True
         else:
             return False
