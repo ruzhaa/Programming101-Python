@@ -10,7 +10,6 @@ commands = {
     "info": info
 }
 
-
 def register_user():
     username = input("Enter your username: ")
     password = input("Enter your password: ")
